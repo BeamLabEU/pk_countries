@@ -62,6 +62,27 @@ defmodule PkCountries do
   end
 
   @doc """
+  Returns one country matching the given attribute and value, or `nil` if not found.
+
+  ## Examples
+
+      iex> %PkCountries.Country{alpha2: alpha2} = PkCountries.get_by(:name, "Poland")
+      iex> alpha2
+      "PL"
+
+      iex> PkCountries.get_by(:name, "Atlantis")
+      nil
+
+  """
+  def get_by(attribute, value) do
+    Enum.find(countries(), fn country ->
+      country
+      |> Map.get(attribute)
+      |> equals_or_contains_in_list(value)
+    end)
+  end
+
+  @doc """
   Filters countries by given attribute.
 
   Returns a list of `PkCountries.Country` structs
