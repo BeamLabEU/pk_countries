@@ -112,7 +112,11 @@ defmodule PkCountries do
 
   """
   def exists?(attribute, value) do
-    filter_by(attribute, value) |> length > 0
+    Enum.any?(countries(), fn country ->
+      country
+      |> Map.get(attribute)
+      |> equals_or_contains_in_list(value)
+    end)
   end
 
   # -- Load countries from yaml files once on compile time ---
