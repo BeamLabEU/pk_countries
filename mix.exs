@@ -1,0 +1,53 @@
+defmodule PkCountries.MixProject do
+  use Mix.Project
+
+  @source_url "https://github.com/BeamLabEU/pk_countries"
+  @version "1.0.0"
+
+  def project do
+    [
+      app: :pk_countries,
+      version: @version,
+      elixir: "~> 1.8",
+      deps: deps(),
+      docs: docs(),
+      package: package()
+    ]
+  end
+
+  def application do
+    [extra_applications: [:logger]]
+  end
+
+  defp deps do
+    [
+      {:yamerl, "~> 0.7"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      extras: [
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
+    ]
+  end
+
+  defp package do
+    [
+      description:
+        "PKCountries is a collection of all sorts of useful information for every country " <>
+          "in the [ISO 3166](https://de.wikipedia.org/wiki/ISO_3166) standard.",
+      maintainers: ["Sebastian Szturo"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/BeamLabEU/pk_countries"}
+    ]
+  end
+end

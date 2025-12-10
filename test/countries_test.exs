@@ -1,0 +1,91 @@
+defmodule PkCountriesTest do
+  use ExUnit.Case, async: true
+  doctest PkCountries
+
+  describe "all/0" do
+    test "get all countries" do
+      countries = PkCountries.all()
+      assert Enum.count(countries) == 250
+    end
+  end
+
+  describe "get/1" do
+    test "gets one country" do
+      %{alpha2: "GB"} = PkCountries.get("GB")
+    end
+  end
+
+  describe "exists?/2" do
+    test "checks if country exists" do
+      assert PkCountries.exists?(:name, "Poland")
+      refute PkCountries.exists?(:name, "Polande")
+    end
+  end
+
+  describe "filter_by/2" do
+    test "return empty list when there are no results" do
+      countries = PkCountries.filter_by(:region, "Azeroth")
+      assert countries == []
+    end
+
+    test "filters countries by alpha2" do
+      [%{alpha3: "DEU"}] = PkCountries.filter_by(:alpha2, "DE")
+      [%{alpha3: "SMR"}] = PkCountries.filter_by(:alpha2, "sm")
+    end
+
+    test "filters countries by alpha3" do
+      [%{alpha2: "VC"}] = PkCountries.filter_by(:alpha3, "VCT")
+      [%{alpha2: "HU"}] = PkCountries.filter_by(:alpha3, "hun")
+    end
+
+    test "filters countries by name" do
+      [%{alpha2: "AW"}] = PkCountries.filter_by(:name, "Aruba")
+      [%{alpha2: "EE"}] = PkCountries.filter_by(:name, "estonia")
+    end
+
+    test "filter countries by unofficial names" do
+      [%{alpha2: "GB"}] = PkCountries.filter_by(:unofficial_names, "Reino Unido")
+      [%{alpha2: "GB"}] = PkCountries.filter_by(:unofficial_names, "The United Kingdom")
+      [%{alpha2: "US"}] = PkCountries.filter_by(:unofficial_names, "États-Unis")
+      [%{alpha2: "US"}] = PkCountries.filter_by(:unofficial_names, "アメリカ合衆国")
+      [%{alpha2: "RU"}] = PkCountries.filter_by(:unofficial_names, "Россия")
+      [%{alpha2: "LB"}] = PkCountries.filter_by(:unofficial_names, "لبنان")
+    end
+
+    test "filters countries with basic string sanitization" do
+      [%{alpha2: "PR"}] = PkCountries.filter_by(:name, "\npuerto    rico \n   ")
+
+      countries = PkCountries.filter_by(:subregion, "WESTERNEUROPE")
+      assert Enum.count(countries) == 9
+    end
+
+    test "filters many countries by region" do
+      countries = PkCountries.filter_by(:region, "Europe")
+      assert Enum.count(countries) == 51
+    end
+
+    test "filters by official language" do
+      countries = PkCountries.filter_by(:languages_official, "EN")
+      assert Enum.count(countries) == 48
+    end
+
+    test "filters by integer attributes" do
+      countries = PkCountries.filter_by(:national_number_lengths, 10)
+      assert Enum.count(countries) == 59
+
+      countries = PkCountries.filter_by(:national_destination_code_lengths, "2")
+      assert Enum.count(countries) == 200
+    end
+  end
+
+  test "get country subdivisions" do
+    country = List.first(PkCountries.filter_by(:alpha2, "BR"))
+    assert Enum.count(PkCountries.Subdivisions.all(country)) == 27
+
+    country = List.first(PkCountries.filter_by(:alpha2, "AD"))
+    assert Enum.count(PkCountries.Subdivisions.all(country)) == 7
+
+    country = List.first(PkCountries.filter_by(:alpha2, "AI"))
+    assert Enum.count(PkCountries.Subdivisions.all(country)) == 14
+  end
+end

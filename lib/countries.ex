@@ -1,0 +1,106 @@
+defmodule PkCountries do
+  @moduledoc """
+  Module for providing countries related functions.
+  """
+
+  @doc """
+  Returns all countries.
+  """
+  def all do
+    countries()
+  end
+
+  @doc """
+  Returns one country given its alpha2 country code.
+
+  ## Examples
+
+      iex> %PkCountries.Country{name: name} = PkCountries.get("PL")
+      iex> name
+      "Poland"
+
+  """
+  def get(country_code) do
+    [country] = filter_by(:alpha2, country_code)
+    country
+  end
+
+  @doc """
+  Filters countries by given attribute.
+
+  Returns a list of `PkCountries.Country` structs
+
+  ## Examples
+
+      iex> countries = PkCountries.filter_by(:region, "Europe")
+      iex> Enum.count(countries)
+      51
+      iex> Enum.map(countries, &Map.get(&1, :alpha2)) |> Enum.take(5)
+      ["AD", "AL", "AT", "AX", "BA"]
+
+      iex> countries = PkCountries.filter_by(:unofficial_names, "Reino Unido")
+      iex> Enum.count(countries)
+      1
+      iex> Enum.map(countries, &Map.get(&1, :name)) |> List.first
+      "United Kingdom of Great Britain and Northern Ireland"
+
+  """
+  def filter_by(attribute, value) do
+    Enum.filter(countries(), fn country ->
+      country
+      |> Map.get(attribute)
+      |> equals_or_contains_in_list(value)
+    end)
+  end
+
+  defp equals_or_contains_in_list(nil, _), do: false
+  defp equals_or_contains_in_list([], _), do: false
+
+  defp equals_or_contains_in_list([attribute | rest], value) do
+    if equals_or_contains_in_list(attribute, value) do
+      true
+    else
+      equals_or_contains_in_list(rest, value)
+    end
+  end
+
+  defp equals_or_contains_in_list(attribute, value),
+    do: normalize(attribute) == normalize(value)
+
+  defp normalize(value) when is_integer(value),
+    do: value |> Integer.to_string() |> normalize()
+
+  defp normalize(value) when is_binary(value),
+    do: value |> String.downcase() |> String.replace(~r/\s+/, "")
+
+  defp normalize(value), do: value
+
+  @doc """
+  Checks if country for specific attribute and value exists.
+
+  Returns boolean.
+
+  ## Examples
+
+      iex> PkCountries.exists?(:name, "Poland")
+      true
+
+      iex> PkCountries.exists?(:name, "Polande")
+      false
+
+  """
+  def exists?(attribute, value) do
+    filter_by(attribute, value) |> length > 0
+  end
+
+  # -- Load countries from yaml files once on compile time ---
+
+  # Ensure :yamerl is running
+  Application.start(:yamerl)
+
+  @countries PkCountries.Loader.load()
+
+  defp countries do
+    @countries
+  end
+end
