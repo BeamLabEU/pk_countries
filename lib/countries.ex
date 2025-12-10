@@ -11,7 +11,7 @@ defmodule PkCountries do
   end
 
   @doc """
-  Returns one country given its alpha2 country code.
+  Returns one country given its alpha2 country code, or `nil` if not found.
 
   ## Examples
 
@@ -19,10 +19,32 @@ defmodule PkCountries do
       iex> name
       "Poland"
 
+      iex> PkCountries.get("INVALID")
+      nil
+
   """
   def get(country_code) do
-    [country] = filter_by(:alpha2, country_code)
-    country
+    case filter_by(:alpha2, country_code) do
+      [country] -> country
+      [] -> nil
+    end
+  end
+
+  @doc """
+  Returns one country given its alpha2 country code, or raises if not found.
+
+  ## Examples
+
+      iex> %PkCountries.Country{name: name} = PkCountries.get!("PL")
+      iex> name
+      "Poland"
+
+  """
+  def get!(country_code) do
+    case get(country_code) do
+      nil -> raise ArgumentError, "no country found for code: #{inspect(country_code)}"
+      country -> country
+    end
   end
 
   @doc """
