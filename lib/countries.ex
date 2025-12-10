@@ -11,6 +11,19 @@ defmodule PkCountries do
   end
 
   @doc """
+  Returns the total number of countries.
+
+  ## Examples
+
+      iex> PkCountries.count()
+      250
+
+  """
+  def count do
+    length(countries())
+  end
+
+  @doc """
   Returns one country given its alpha2 country code, or `nil` if not found.
 
   ## Examples
