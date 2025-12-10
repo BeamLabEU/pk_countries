@@ -2,7 +2,7 @@
 
 PkCountries is a collection of all sorts of useful information for every country in the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) standard.
 
-It is based on the data from the Elixir library [Countries](https://github.com/SebastianSzturo/countries) and the Ruby Gem [Countries](https://github.com/hexorx/countries).
+It is based on the data from the pretty popular but abandoned Elixir library [Countries](https://hex.pm/packages/countries) and previously the Ruby Gem [Countries](https://github.com/hexorx/countries).
 
 ## Installation
 
@@ -72,6 +72,7 @@ Enum.count(subdivisions)
 ## Copyright and License
 
 Copyright (c) 2025 Dmitri Don / BeamLab
+
 Copyright (c) 2015-2025 Sebastian Szturo
 
 This software is licensed under [the MIT license](./LICENSE.md).
