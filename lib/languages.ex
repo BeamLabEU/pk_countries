@@ -1,21 +1,21 @@
-defmodule PkCountries.Languages do
+defmodule BeamLabCountries.Languages do
   @moduledoc """
   Module for looking up language names from ISO 639-1 codes.
 
   ## Examples
 
-      iex> PkCountries.Languages.get_name("en")
+      iex> BeamLabCountries.Languages.get_name("en")
       "English"
 
-      iex> PkCountries.Languages.get_name("pl")
+      iex> BeamLabCountries.Languages.get_name("pl")
       "Polish"
 
-      iex> PkCountries.Languages.get_name("invalid")
+      iex> BeamLabCountries.Languages.get_name("invalid")
       nil
 
   """
 
-  @languages_path Path.join([:code.priv_dir(:pk_countries), "data", "languages.json"])
+  @languages_path Path.join([:code.priv_dir(:beamlab_countries), "data", "languages.json"])
   @external_resource @languages_path
 
   @languages @languages_path
@@ -28,13 +28,13 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> PkCountries.Languages.get_name("en")
+      iex> BeamLabCountries.Languages.get_name("en")
       "English"
 
-      iex> PkCountries.Languages.get_name("de")
+      iex> BeamLabCountries.Languages.get_name("de")
       "German"
 
-      iex> PkCountries.Languages.get_name("ja")
+      iex> BeamLabCountries.Languages.get_name("ja")
       "Japanese"
 
   """
@@ -50,13 +50,13 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> PkCountries.Languages.get_native_name("en")
+      iex> BeamLabCountries.Languages.get_native_name("en")
       "English"
 
-      iex> PkCountries.Languages.get_native_name("de")
+      iex> BeamLabCountries.Languages.get_native_name("de")
       "Deutsch"
 
-      iex> PkCountries.Languages.get_native_name("ja")
+      iex> BeamLabCountries.Languages.get_native_name("ja")
       "日本語"
 
   """
@@ -72,7 +72,7 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> PkCountries.Languages.get("en")
+      iex> BeamLabCountries.Languages.get("en")
       %{name: "English", native_name: "English", family: "Indo-European", code: "en"}
 
   """
@@ -96,7 +96,7 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> "en" in PkCountries.Languages.all_codes()
+      iex> "en" in BeamLabCountries.Languages.all_codes()
       true
 
   """
@@ -109,7 +109,7 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> PkCountries.Languages.count()
+      iex> BeamLabCountries.Languages.count()
       184
 
   """
@@ -122,10 +122,10 @@ defmodule PkCountries.Languages do
 
   ## Examples
 
-      iex> PkCountries.Languages.valid?("en")
+      iex> BeamLabCountries.Languages.valid?("en")
       true
 
-      iex> PkCountries.Languages.valid?("invalid")
+      iex> BeamLabCountries.Languages.valid?("invalid")
       false
 
   """

@@ -1,4 +1,4 @@
-defmodule PkCountries.Translations do
+defmodule BeamLabCountries.Translations do
   @moduledoc """
   Module for looking up country names in different languages.
 
@@ -6,18 +6,18 @@ defmodule PkCountries.Translations do
 
   ## Examples
 
-      iex> PkCountries.Translations.get_name("PL", "de")
+      iex> BeamLabCountries.Translations.get_name("PL", "de")
       "Polen"
 
-      iex> PkCountries.Translations.get_name("US", "ja")
+      iex> BeamLabCountries.Translations.get_name("US", "ja")
       "アメリカ合衆国"
 
-      iex> PkCountries.Translations.get_name("DE", "pl")
+      iex> BeamLabCountries.Translations.get_name("DE", "pl")
       "Niemcy"
 
   """
 
-  @locales_path Path.join([:code.priv_dir(:pk_countries), "data", "locales"])
+  @locales_path Path.join([:code.priv_dir(:beamlab_countries), "data", "locales"])
   @supported_locales ~w(ar de en es fr it ja ko nl pl pt ru sv uk zh)
 
   # Load all locale files at compile time
@@ -35,16 +35,16 @@ defmodule PkCountries.Translations do
 
   ## Examples
 
-      iex> PkCountries.Translations.get_name("PL", "en")
+      iex> BeamLabCountries.Translations.get_name("PL", "en")
       "Poland"
 
-      iex> PkCountries.Translations.get_name("PL", "de")
+      iex> BeamLabCountries.Translations.get_name("PL", "de")
       "Polen"
 
-      iex> PkCountries.Translations.get_name("JP", "zh")
+      iex> BeamLabCountries.Translations.get_name("JP", "zh")
       "日本"
 
-      iex> PkCountries.Translations.get_name("XX", "en")
+      iex> BeamLabCountries.Translations.get_name("XX", "en")
       nil
 
   """
@@ -63,7 +63,7 @@ defmodule PkCountries.Translations do
 
   ## Examples
 
-      iex> names = PkCountries.Translations.get_all_names("PL")
+      iex> names = BeamLabCountries.Translations.get_all_names("PL")
       iex> names["en"]
       "Poland"
       iex> names["de"]
@@ -84,10 +84,10 @@ defmodule PkCountries.Translations do
 
   ## Examples
 
-      iex> "en" in PkCountries.Translations.supported_locales()
+      iex> "en" in BeamLabCountries.Translations.supported_locales()
       true
 
-      iex> "pl" in PkCountries.Translations.supported_locales()
+      iex> "pl" in BeamLabCountries.Translations.supported_locales()
       true
 
   """
@@ -100,10 +100,10 @@ defmodule PkCountries.Translations do
 
   ## Examples
 
-      iex> PkCountries.Translations.locale_supported?("en")
+      iex> BeamLabCountries.Translations.locale_supported?("en")
       true
 
-      iex> PkCountries.Translations.locale_supported?("xx")
+      iex> BeamLabCountries.Translations.locale_supported?("xx")
       false
 
   """

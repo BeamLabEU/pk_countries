@@ -1,6 +1,6 @@
-# PkCountries
+# BeamLabCountries
 
-PkCountries is a collection of all sorts of useful information for every country in the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) standard.
+BeamLabCountries is a collection of all sorts of useful information for every country in the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) standard.
 
 It is based on the data from the pretty popular but abandoned Elixir library [Countries](https://hex.pm/packages/countries) and previously the Ruby Gem [Countries](https://github.com/hexorx/countries).
 
@@ -9,23 +9,23 @@ It is based on the data from the pretty popular but abandoned Elixir library [Co
 ```elixir
 defp deps do
   [
-    {:pk_countries, "~> 1.0"}
+    {:beamlab_countries, "~> 1.0"}
   ]
 end
 ```
 
-After you are done, run `mix deps.get` in your shell to fetch and compile pk_countries.
+After you are done, run `mix deps.get` in your shell to fetch and compile beamlab_countries.
 
 ## Usage
 
 Find country by attribute:
 
 ```elixir
-country = PkCountries.filter_by(:alpha2, "DE")
-# [%PkCountries.Country{alpha2: "DE", alpha3: "DEU", continent: "Europe",
+country = BeamLabCountries.filter_by(:alpha2, "DE")
+# [%BeamLabCountries.Country{alpha2: "DE", alpha3: "DEU", continent: "Europe",
 #   country_code: "49", currency: "EUR", ...}]
 
-countries = PkCountries.filter_by(:region, "Europe")
+countries = BeamLabCountries.filter_by(:region, "Europe")
 Enum.count(countries)
 # 51
 ```
@@ -33,7 +33,7 @@ Enum.count(countries)
 Get all countries:
 
 ```elixir
-countries = PkCountries.all()
+countries = BeamLabCountries.all()
 Enum.count(countries)
 # 250
 ```
@@ -41,22 +41,22 @@ Enum.count(countries)
 Get a single country by alpha2 code:
 
 ```elixir
-country = PkCountries.get("PL")
-# %PkCountries.Country{name: "Poland", alpha2: "PL", ...}
+country = BeamLabCountries.get("PL")
+# %BeamLabCountries.Country{name: "Poland", alpha2: "PL", ...}
 ```
 
 Check if a country exists:
 
 ```elixir
-PkCountries.exists?(:name, "Poland")
+BeamLabCountries.exists?(:name, "Poland")
 # true
 ```
 
 Get subdivisions for a country:
 
 ```elixir
-country = PkCountries.get("BR")
-subdivisions = PkCountries.Subdivisions.all(country)
+country = BeamLabCountries.get("BR")
+subdivisions = BeamLabCountries.Subdivisions.all(country)
 Enum.count(subdivisions)
 # 27
 ```

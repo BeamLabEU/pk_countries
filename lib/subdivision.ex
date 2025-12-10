@@ -1,4 +1,4 @@
-defmodule PkCountries.Subdivision do
+defmodule BeamLabCountries.Subdivision do
   @moduledoc """
   Country Subdivision struct.
   """

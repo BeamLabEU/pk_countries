@@ -1,17 +1,17 @@
-defmodule PkCountries.Subdivisions do
+defmodule BeamLabCountries.Subdivisions do
   @moduledoc """
   Module for providing subdivisions related functions.
   """
 
-  alias PkCountries.Subdivision
+  alias BeamLabCountries.Subdivision
 
   @doc """
   Returns all subdivisions by country.
 
   ## Examples
 
-      iex> country = PkCountries.get("PL")
-      iex> PkCountries.Subdivisions.all(country)
+      iex> country = BeamLabCountries.get("PL")
+      iex> BeamLabCountries.Subdivisions.all(country)
 
   """
   def all(country) do
@@ -21,7 +21,7 @@ defmodule PkCountries.Subdivisions do
   end
 
   defp load_subdivisions(country_code) do
-    path = Path.join([:code.priv_dir(:pk_countries), "data", "subdivisions", "#{country_code}.yaml"])
+    path = Path.join([:code.priv_dir(:beamlab_countries), "data", "subdivisions", "#{country_code}.yaml"])
 
     case YamlElixir.read_from_file(path) do
       {:ok, data} -> Map.to_list(data)

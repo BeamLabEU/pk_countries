@@ -1,4 +1,4 @@
-defmodule PkCountries.Country do
+defmodule BeamLabCountries.Country do
   @moduledoc """
   Country struct.
   """

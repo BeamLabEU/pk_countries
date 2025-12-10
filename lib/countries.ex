@@ -1,4 +1,4 @@
-defmodule PkCountries do
+defmodule BeamLabCountries do
   @moduledoc """
   Module for providing countries related functions.
   """
@@ -15,7 +15,7 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> PkCountries.count()
+      iex> BeamLabCountries.count()
       250
 
   """
@@ -28,11 +28,11 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> %PkCountries.Country{name: name} = PkCountries.get("PL")
+      iex> %BeamLabCountries.Country{name: name} = BeamLabCountries.get("PL")
       iex> name
       "Poland"
 
-      iex> PkCountries.get("INVALID")
+      iex> BeamLabCountries.get("INVALID")
       nil
 
   """
@@ -45,11 +45,11 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> %PkCountries.Country{name: name} = PkCountries.get_by_alpha3("POL")
+      iex> %BeamLabCountries.Country{name: name} = BeamLabCountries.get_by_alpha3("POL")
       iex> name
       "Poland"
 
-      iex> PkCountries.get_by_alpha3("INVALID")
+      iex> BeamLabCountries.get_by_alpha3("INVALID")
       nil
 
   """
@@ -62,7 +62,7 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> %PkCountries.Country{name: name} = PkCountries.get!("PL")
+      iex> %BeamLabCountries.Country{name: name} = BeamLabCountries.get!("PL")
       iex> name
       "Poland"
 
@@ -79,11 +79,11 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> %PkCountries.Country{alpha2: alpha2} = PkCountries.get_by(:name, "Poland")
+      iex> %BeamLabCountries.Country{alpha2: alpha2} = BeamLabCountries.get_by(:name, "Poland")
       iex> alpha2
       "PL"
 
-      iex> PkCountries.get_by(:name, "Atlantis")
+      iex> BeamLabCountries.get_by(:name, "Atlantis")
       nil
 
   """
@@ -98,17 +98,17 @@ defmodule PkCountries do
   @doc """
   Filters countries by given attribute.
 
-  Returns a list of `PkCountries.Country` structs
+  Returns a list of `BeamLabCountries.Country` structs
 
   ## Examples
 
-      iex> countries = PkCountries.filter_by(:region, "Europe")
+      iex> countries = BeamLabCountries.filter_by(:region, "Europe")
       iex> Enum.count(countries)
       51
       iex> Enum.map(countries, &Map.get(&1, :alpha2)) |> Enum.take(5)
       ["AD", "AL", "AT", "AX", "BA"]
 
-      iex> countries = PkCountries.filter_by(:unofficial_names, "Reino Unido")
+      iex> countries = BeamLabCountries.filter_by(:unofficial_names, "Reino Unido")
       iex> Enum.count(countries)
       1
       iex> Enum.map(countries, &Map.get(&1, :name)) |> List.first
@@ -149,10 +149,10 @@ defmodule PkCountries do
 
   ## Examples
 
-      iex> PkCountries.exists?(:name, "Poland")
+      iex> BeamLabCountries.exists?(:name, "Poland")
       true
 
-      iex> PkCountries.exists?(:name, "Polande")
+      iex> BeamLabCountries.exists?(:name, "Polande")
       false
 
   """
@@ -166,7 +166,7 @@ defmodule PkCountries do
 
   # -- Load countries from yaml files once on compile time ---
 
-  @countries PkCountries.Loader.load()
+  @countries BeamLabCountries.Loader.load()
   @countries_by_alpha2 Map.new(@countries, &{String.upcase(&1.alpha2), &1})
   @countries_by_alpha3 Map.new(@countries, &{String.upcase(&1.alpha3), &1})
 

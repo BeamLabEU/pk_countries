@@ -1,12 +1,12 @@
-defmodule PkCountries.MixProject do
+defmodule BeamLabCountries.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/BeamLabEU/pk_countries"
+  @source_url "https://github.com/BeamLabEU/beamlab_countries"
   @version "1.0.0"
 
   def project do
     [
-      app: :pk_countries,
+      app: :beamlab_countries,
       version: @version,
       elixir: "~> 1.18",
       deps: deps(),
@@ -43,11 +43,11 @@ defmodule PkCountries.MixProject do
   defp package do
     [
       description:
-        "PKCountries is a collection of all sorts of useful information for every country " <>
+        "BeamLabCountries is a collection of all sorts of useful information for every country " <>
           "in the [ISO 3166](https://de.wikipedia.org/wiki/ISO_3166) standard.",
-      maintainers: ["Sebastian Szturo"],
+      maintainers: ["BeamLab"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/BeamLabEU/pk_countries"}
+      links: %{"GitHub" => "https://github.com/BeamLabEU/beamlab_countries"}
     ]
   end
 end

@@ -1,91 +1,91 @@
-defmodule PkCountriesTest do
+defmodule BeamLabCountriesTest do
   use ExUnit.Case, async: true
-  doctest PkCountries
+  doctest BeamLabCountries
 
   describe "all/0" do
     test "get all countries" do
-      countries = PkCountries.all()
+      countries = BeamLabCountries.all()
       assert Enum.count(countries) == 250
     end
   end
 
   describe "get/1" do
     test "gets one country" do
-      %{alpha2: "GB"} = PkCountries.get("GB")
+      %{alpha2: "GB"} = BeamLabCountries.get("GB")
     end
   end
 
   describe "exists?/2" do
     test "checks if country exists" do
-      assert PkCountries.exists?(:name, "Poland")
-      refute PkCountries.exists?(:name, "Polande")
+      assert BeamLabCountries.exists?(:name, "Poland")
+      refute BeamLabCountries.exists?(:name, "Polande")
     end
   end
 
   describe "filter_by/2" do
     test "return empty list when there are no results" do
-      countries = PkCountries.filter_by(:region, "Azeroth")
+      countries = BeamLabCountries.filter_by(:region, "Azeroth")
       assert countries == []
     end
 
     test "filters countries by alpha2" do
-      [%{alpha3: "DEU"}] = PkCountries.filter_by(:alpha2, "DE")
-      [%{alpha3: "SMR"}] = PkCountries.filter_by(:alpha2, "sm")
+      [%{alpha3: "DEU"}] = BeamLabCountries.filter_by(:alpha2, "DE")
+      [%{alpha3: "SMR"}] = BeamLabCountries.filter_by(:alpha2, "sm")
     end
 
     test "filters countries by alpha3" do
-      [%{alpha2: "VC"}] = PkCountries.filter_by(:alpha3, "VCT")
-      [%{alpha2: "HU"}] = PkCountries.filter_by(:alpha3, "hun")
+      [%{alpha2: "VC"}] = BeamLabCountries.filter_by(:alpha3, "VCT")
+      [%{alpha2: "HU"}] = BeamLabCountries.filter_by(:alpha3, "hun")
     end
 
     test "filters countries by name" do
-      [%{alpha2: "AW"}] = PkCountries.filter_by(:name, "Aruba")
-      [%{alpha2: "EE"}] = PkCountries.filter_by(:name, "estonia")
+      [%{alpha2: "AW"}] = BeamLabCountries.filter_by(:name, "Aruba")
+      [%{alpha2: "EE"}] = BeamLabCountries.filter_by(:name, "estonia")
     end
 
     test "filter countries by unofficial names" do
-      [%{alpha2: "GB"}] = PkCountries.filter_by(:unofficial_names, "Reino Unido")
-      [%{alpha2: "GB"}] = PkCountries.filter_by(:unofficial_names, "The United Kingdom")
-      [%{alpha2: "US"}] = PkCountries.filter_by(:unofficial_names, "États-Unis")
-      [%{alpha2: "US"}] = PkCountries.filter_by(:unofficial_names, "アメリカ合衆国")
-      [%{alpha2: "RU"}] = PkCountries.filter_by(:unofficial_names, "Россия")
-      [%{alpha2: "LB"}] = PkCountries.filter_by(:unofficial_names, "لبنان")
+      [%{alpha2: "GB"}] = BeamLabCountries.filter_by(:unofficial_names, "Reino Unido")
+      [%{alpha2: "GB"}] = BeamLabCountries.filter_by(:unofficial_names, "The United Kingdom")
+      [%{alpha2: "US"}] = BeamLabCountries.filter_by(:unofficial_names, "États-Unis")
+      [%{alpha2: "US"}] = BeamLabCountries.filter_by(:unofficial_names, "アメリカ合衆国")
+      [%{alpha2: "RU"}] = BeamLabCountries.filter_by(:unofficial_names, "Россия")
+      [%{alpha2: "LB"}] = BeamLabCountries.filter_by(:unofficial_names, "لبنان")
     end
 
     test "filters countries with basic string sanitization" do
-      [%{alpha2: "PR"}] = PkCountries.filter_by(:name, "\npuerto    rico \n   ")
+      [%{alpha2: "PR"}] = BeamLabCountries.filter_by(:name, "\npuerto    rico \n   ")
 
-      countries = PkCountries.filter_by(:subregion, "WESTERNEUROPE")
+      countries = BeamLabCountries.filter_by(:subregion, "WESTERNEUROPE")
       assert Enum.count(countries) == 9
     end
 
     test "filters many countries by region" do
-      countries = PkCountries.filter_by(:region, "Europe")
+      countries = BeamLabCountries.filter_by(:region, "Europe")
       assert Enum.count(countries) == 51
     end
 
     test "filters by official language" do
-      countries = PkCountries.filter_by(:languages_official, "en")
+      countries = BeamLabCountries.filter_by(:languages_official, "en")
       assert Enum.count(countries) == 92
     end
 
     test "filters by integer attributes" do
-      countries = PkCountries.filter_by(:national_number_lengths, 10)
+      countries = BeamLabCountries.filter_by(:national_number_lengths, 10)
       assert Enum.count(countries) == 59
 
-      countries = PkCountries.filter_by(:national_destination_code_lengths, "2")
+      countries = BeamLabCountries.filter_by(:national_destination_code_lengths, "2")
       assert Enum.count(countries) == 200
     end
   end
 
   test "get country subdivisions" do
-    country = List.first(PkCountries.filter_by(:alpha2, "BR"))
-    assert Enum.count(PkCountries.Subdivisions.all(country)) == 27
+    country = List.first(BeamLabCountries.filter_by(:alpha2, "BR"))
+    assert Enum.count(BeamLabCountries.Subdivisions.all(country)) == 27
 
-    country = List.first(PkCountries.filter_by(:alpha2, "AD"))
-    assert Enum.count(PkCountries.Subdivisions.all(country)) == 7
+    country = List.first(BeamLabCountries.filter_by(:alpha2, "AD"))
+    assert Enum.count(BeamLabCountries.Subdivisions.all(country)) == 7
 
-    country = List.first(PkCountries.filter_by(:alpha2, "AI"))
-    assert Enum.count(PkCountries.Subdivisions.all(country)) == 14
+    country = List.first(BeamLabCountries.filter_by(:alpha2, "AI"))
+    assert Enum.count(BeamLabCountries.Subdivisions.all(country)) == 14
   end
 end

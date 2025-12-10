@@ -1,7 +1,7 @@
-defmodule PkCountries.Loader do
+defmodule BeamLabCountries.Loader do
   @moduledoc false
 
-  alias PkCountries.Country
+  alias BeamLabCountries.Country
 
   @doc """
   Loads all country data from YAML files at compile time.
@@ -18,7 +18,7 @@ defmodule PkCountries.Loader do
   end
 
   defp data_path(path) do
-    Path.join([:code.priv_dir(:pk_countries), "data", path])
+    Path.join([:code.priv_dir(:beamlab_countries), "data", path])
   end
 
   defp convert_country(data) do
