@@ -65,8 +65,8 @@ defmodule PkCountriesTest do
     end
 
     test "filters by official language" do
-      countries = PkCountries.filter_by(:languages_official, "EN")
-      assert Enum.count(countries) == 48
+      countries = PkCountries.filter_by(:languages_official, "en")
+      assert Enum.count(countries) == 92
     end
 
     test "filters by integer attributes" do
