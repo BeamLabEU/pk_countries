@@ -1,39 +1,36 @@
-# Countries
+# PkCountries
 
-[![Build Status](https://travis-ci.org/SebastianSzturo/countries.svg?branch=master)](https://travis-ci.org/SebastianSzturo/countries)
-[![Module Version](https://img.shields.io/hexpm/v/countries.svg)](https://hex.pm/packages/countries)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-9768d1.svg)](https://hexdocs.pm/countries/)
-[![Total Download](https://img.shields.io/hexpm/dt/countries.svg)](https://hex.pm/packages/countries)
-[![License](https://img.shields.io/hexpm/l/countries.svg)](https://github.com/yyy/countries/blob/master/LICENSE)
-[![Last Updated](https://img.shields.io/github/last-commit/SebastianSzturo/countries.svg)](https://github.com/SebastianSzturo/countries/commits/master)
+[![Module Version](https://img.shields.io/hexpm/v/pk_countries.svg)](https://hex.pm/packages/pk_countries)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-9768d1.svg)](https://hexdocs.pm/pk_countries/)
+[![Total Download](https://img.shields.io/hexpm/dt/pk_countries.svg)](https://hex.pm/packages/pk_countries)
+[![License](https://img.shields.io/hexpm/l/pk_countries.svg)](https://github.com/BeamLabEU/pk_countries/blob/master/LICENSE)
 
-Countries is a collection of all sorts of useful information for every country in the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) standard.
+PkCountries is a collection of all sorts of useful information for every country in the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) standard.
 
-It is based on the data from the `countries` elixir lib [Countries](https://github.com/SebastianSzturo/countries).
-It is based on the data from the Ruby Gem [Countries](https://github.com/hexorx/countries).
+It is based on the data from the Elixir library [Countries](https://github.com/SebastianSzturo/countries) and the Ruby Gem [Countries](https://github.com/hexorx/countries).
 
 ## Installation
 
 ```elixir
 defp deps do
   [
-    {:countries, "~> 1.0"}
+    {:pk_countries, "~> 1.0"}
   ]
 end
 ```
 
-After you are done, run ```mix deps.get``` in your shell to fetch and compile countries.
+After you are done, run `mix deps.get` in your shell to fetch and compile pk_countries.
 
 ## Usage
 
 Find country by attribute:
 
 ```elixir
-country = Countries.filter_by(:alpha2, "DE")
-# [%Countries.Country{alpha2: 'DE', alpha3: 'DEU', continent: 'Europe',
-#	 country_code: '49', currency: 'EUR', ...]
+country = PkCountries.filter_by(:alpha2, "DE")
+# [%PkCountries.Country{alpha2: "DE", alpha3: "DEU", continent: "Europe",
+#   country_code: "49", currency: "EUR", ...}]
 
-countries = Countries.filter_by(:region, "Europe")
+countries = PkCountries.filter_by(:region, "Europe")
 Enum.count(countries)
 # 51
 ```
@@ -41,9 +38,32 @@ Enum.count(countries)
 Get all countries:
 
 ```elixir
-countries = Countries.all
+countries = PkCountries.all()
 Enum.count(countries)
 # 250
+```
+
+Get a single country by alpha2 code:
+
+```elixir
+country = PkCountries.get("PL")
+# %PkCountries.Country{name: "Poland", alpha2: "PL", ...}
+```
+
+Check if a country exists:
+
+```elixir
+PkCountries.exists?(:name, "Poland")
+# true
+```
+
+Get subdivisions for a country:
+
+```elixir
+country = PkCountries.get("BR")
+subdivisions = PkCountries.Subdivisions.all(country)
+Enum.count(subdivisions)
+# 27
 ```
 
 ## Contributing
