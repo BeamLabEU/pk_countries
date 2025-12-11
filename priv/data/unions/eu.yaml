@@ -1,0 +1,37 @@
+---
+eu:
+  code: eu
+  name: European Union
+  type: economic_political
+  founded: "1993-11-01"
+  headquarters: Brussels, Belgium
+  website: https://europa.eu
+  wikipedia: https://en.wikipedia.org/wiki/European_Union
+  members:
+    - AT
+    - BE
+    - BG
+    - CY
+    - CZ
+    - DE
+    - DK
+    - EE
+    - ES
+    - FI
+    - FR
+    - GR
+    - HR
+    - HU
+    - IE
+    - IT
+    - LT
+    - LU
+    - LV
+    - MT
+    - NL
+    - PL
+    - PT
+    - RO
+    - SE
+    - SI
+    - SK

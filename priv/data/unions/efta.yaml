@@ -1,0 +1,14 @@
+---
+efta:
+  code: efta
+  name: European Free Trade Association
+  type: trade
+  founded: "1960-05-03"
+  headquarters: Geneva, Switzerland
+  website: https://www.efta.int
+  wikipedia: https://en.wikipedia.org/wiki/European_Free_Trade_Association
+  members:
+    - CH
+    - IS
+    - LI
+    - NO

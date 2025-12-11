@@ -1,0 +1,48 @@
+---
+oecd:
+  code: oecd
+  name: Organisation for Economic Co-operation and Development
+  type: development
+  founded: "1961-09-30"
+  headquarters: Paris, France
+  website: https://www.oecd.org
+  wikipedia: https://en.wikipedia.org/wiki/OECD
+  members:
+    - AU
+    - AT
+    - BE
+    - CA
+    - CL
+    - CO
+    - CR
+    - CZ
+    - DK
+    - EE
+    - FI
+    - FR
+    - DE
+    - GR
+    - HU
+    - IS
+    - IE
+    - IL
+    - IT
+    - JP
+    - KR
+    - LV
+    - LT
+    - LU
+    - MX
+    - NL
+    - NZ
+    - NO
+    - PL
+    - PT
+    - SK
+    - SI
+    - ES
+    - SE
+    - CH
+    - TR
+    - GB
+    - US

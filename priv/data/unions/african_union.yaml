@@ -1,0 +1,64 @@
+---
+african_union:
+  code: african_union
+  name: African Union
+  type: political
+  founded: "2002-07-09"
+  headquarters: Addis Ababa, Ethiopia
+  website: https://au.int
+  wikipedia: https://en.wikipedia.org/wiki/African_Union
+  members:
+    - DZ
+    - AO
+    - BJ
+    - BW
+    - BF
+    - BI
+    - CV
+    - CM
+    - CF
+    - TD
+    - KM
+    - CG
+    - CD
+    - CI
+    - DJ
+    - EG
+    - GQ
+    - ER
+    - SZ
+    - ET
+    - GA
+    - GM
+    - GH
+    - GN
+    - GW
+    - KE
+    - LS
+    - LR
+    - LY
+    - MG
+    - MW
+    - ML
+    - MR
+    - MU
+    - MA
+    - MZ
+    - NA
+    - NE
+    - NG
+    - RW
+    - ST
+    - SN
+    - SC
+    - SL
+    - SO
+    - ZA
+    - SS
+    - SD
+    - TZ
+    - TG
+    - TN
+    - UG
+    - ZM
+    - ZW

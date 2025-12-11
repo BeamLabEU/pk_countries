@@ -1,0 +1,31 @@
+---
+apec:
+  code: apec
+  name: Asia-Pacific Economic Cooperation
+  type: trade
+  founded: "1989-11-06"
+  headquarters: Singapore
+  website: https://www.apec.org
+  wikipedia: https://en.wikipedia.org/wiki/Asia-Pacific_Economic_Cooperation
+  members:
+    - AU
+    - BN
+    - CA
+    - CL
+    - CN
+    - HK
+    - ID
+    - JP
+    - KR
+    - MY
+    - MX
+    - NZ
+    - PG
+    - PE
+    - PH
+    - RU
+    - SG
+    - TW
+    - TH
+    - US
+    - VN

@@ -1,0 +1,15 @@
+---
+mercosur:
+  code: mercosur
+  name: Southern Common Market
+  type: trade
+  founded: "1991-03-26"
+  headquarters: Montevideo, Uruguay
+  website: https://www.mercosur.int
+  wikipedia: https://en.wikipedia.org/wiki/Mercosur
+  members:
+    - AR
+    - BR
+    - PY
+    - UY
+    - VE

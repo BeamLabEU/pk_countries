@@ -1,0 +1,17 @@
+---
+g7:
+  code: g7
+  name: Group of Seven
+  type: development
+  founded: "1975-11-15"
+  headquarters:
+  website: https://www.g7germany.de
+  wikipedia: https://en.wikipedia.org/wiki/G7
+  members:
+    - CA
+    - FR
+    - DE
+    - IT
+    - JP
+    - GB
+    - US

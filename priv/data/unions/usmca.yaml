@@ -1,0 +1,13 @@
+---
+usmca:
+  code: usmca
+  name: United States-Mexico-Canada Agreement
+  type: trade
+  founded: "2020-07-01"
+  headquarters:
+  website: https://ustr.gov/usmca
+  wikipedia: https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement
+  members:
+    - CA
+    - MX
+    - US

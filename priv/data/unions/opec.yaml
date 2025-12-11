@@ -1,0 +1,23 @@
+---
+opec:
+  code: opec
+  name: Organization of the Petroleum Exporting Countries
+  type: energy
+  founded: "1960-09-14"
+  headquarters: Vienna, Austria
+  website: https://www.opec.org
+  wikipedia: https://en.wikipedia.org/wiki/OPEC
+  members:
+    - DZ
+    - AO
+    - CG
+    - GQ
+    - GA
+    - IR
+    - IQ
+    - KW
+    - LY
+    - NG
+    - SA
+    - AE
+    - VE

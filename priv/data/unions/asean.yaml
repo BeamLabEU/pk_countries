@@ -1,0 +1,20 @@
+---
+asean:
+  code: asean
+  name: Association of Southeast Asian Nations
+  type: economic_political
+  founded: "1967-08-08"
+  headquarters: Jakarta, Indonesia
+  website: https://asean.org
+  wikipedia: https://en.wikipedia.org/wiki/ASEAN
+  members:
+    - BN
+    - KH
+    - ID
+    - LA
+    - MY
+    - MM
+    - PH
+    - SG
+    - TH
+    - VN
