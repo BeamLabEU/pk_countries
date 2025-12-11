@@ -49,6 +49,7 @@ defmodule BeamLabCountries.Loader do
       address_format: data["address_format"],
       dissolved_on: data["dissolved_on"],
       eu_member: data["eu_member"],
+      eea_member: data["eea_member"],
       alt_currency: data["alt_currency"],
       vat_rates: atomize_keys(data["vat_rates"]),
       postal_code: data["postal_code"],

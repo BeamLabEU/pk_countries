@@ -30,6 +30,7 @@ defmodule BeamLabCountries.Country do
     :address_format,
     :dissolved_on,
     :eu_member,
+    :eea_member,
     :alt_currency,
     :vat_rates,
     :postal_code,
